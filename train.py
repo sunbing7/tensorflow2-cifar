@@ -170,9 +170,9 @@ class Model():
             self.test_accuracy.reset_states()
 
             for images, labels in train_clean_ds:
-                adv_images, adv_labels = train_adv_ds.next()
-                _input = np.concatenate((images[:44], adv_images[:20]), axis=0)
-                _output = np.concatenate((labels[:44], adv_labels[:20]), axis=0)
+                for adv_images, adv_labels in train_adv_ds:
+                    _input = np.concatenate((images[:44], adv_images[:20]), axis=0)
+                    _output = np.concatenate((labels[:44], adv_labels[:20]), axis=0)
                 self.train_step(_input, _output)
 
             for images, labels in test_clean_ds:
