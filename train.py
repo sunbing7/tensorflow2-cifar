@@ -234,7 +234,7 @@ class Model():
 def main():
     # Data
     print('==> Preparing data...')
-
+    print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
     x_train_clean, y_train_clean, x_train_adv, y_train_adv, x_test_clean, y_test_clean, x_test_adv, y_test_adv \
         = get_custom_cifar(args.data_set, args.t_attack)
     mean, std = get_mean_and_std(x_train_clean)
